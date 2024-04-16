@@ -1,9 +1,9 @@
 def charger_taches():
-    with open("taches.txt", "r") as file:
+    with open("tache.txt", "r") as file:
         return [line.strip() for line in file.readlines()]
 
 def sauvegarder_taches(taches):
-    with open("taches.txt", "w") as file:
+    with open("tache.txt", "w") as file:
         for tache in taches:
             file.write(tache + "\n")
 
@@ -28,3 +28,13 @@ def afficher_taches(taches):
         print("\nListe des tâches :")
         for i, tache in enumerate(taches, start=1):
             print(f"{i}. {tache}") 
+
+def marquer_comme_terminee(taches):
+    afficher_taches(taches)
+    index = int(input("Entrez l'index de la tâche terminée : ")) - 1
+    if 0 <= index < len(taches):
+        taches[index] += " (Terminée)"
+        print("Tâche marquée comme terminée avec succès.")
+    else:
+        print("Index invalide.")
+
